@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIEFramework", "AIEFramework\AIEFramework_vs2013.vcxproj", "{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5D056CED-A513-41EE-A0DD-6ECFE546F6B0} = {5D056CED-A513-41EE-A0DD-6ECFE546F6B0}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FBXLoader", "..\tools\FBXLoader\FBXLoader_vs2013.vcxproj", "{5D056CED-A513-41EE-A0DD-6ECFE546F6B0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tutorial1", "Tutorial1\Tutorial1.vcxproj", "{17E97C3E-0841-44D4-8118-0DE2037FE4DC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B} = {BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tutorial2_geometry", "Tutorial2\Tutorial2.vcxproj", "{524B4D50-07E0-4546-B234-47FB540D5C72}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B} = {BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tutorial2_FBX", "Tutorial2_FBX\Tutorial2_FBX.vcxproj", "{3359B112-A83E-4F7B-9746-D38BAC714B16}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B} = {BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tutorial3_Texturing", "Tutorial3_Texturing\Tutorial3_Texturing.vcxproj", "{3D1CF7E6-3B8A-4635-8206-EF1CD62C5FD8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B} = {BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}.Debug|Win32.Build.0 = Debug|Win32
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}.Release|Win32.ActiveCfg = Release|Win32
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}.Release|Win32.Build.0 = Release|Win32
+		{5D056CED-A513-41EE-A0DD-6ECFE546F6B0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5D056CED-A513-41EE-A0DD-6ECFE546F6B0}.Debug|Win32.Build.0 = Debug|Win32
+		{5D056CED-A513-41EE-A0DD-6ECFE546F6B0}.Release|Win32.ActiveCfg = Release|Win32
+		{5D056CED-A513-41EE-A0DD-6ECFE546F6B0}.Release|Win32.Build.0 = Release|Win32
+		{17E97C3E-0841-44D4-8118-0DE2037FE4DC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{17E97C3E-0841-44D4-8118-0DE2037FE4DC}.Debug|Win32.Build.0 = Debug|Win32
+		{17E97C3E-0841-44D4-8118-0DE2037FE4DC}.Release|Win32.ActiveCfg = Release|Win32
+		{17E97C3E-0841-44D4-8118-0DE2037FE4DC}.Release|Win32.Build.0 = Release|Win32
+		{524B4D50-07E0-4546-B234-47FB540D5C72}.Debug|Win32.ActiveCfg = Debug|Win32
+		{524B4D50-07E0-4546-B234-47FB540D5C72}.Debug|Win32.Build.0 = Debug|Win32
+		{524B4D50-07E0-4546-B234-47FB540D5C72}.Release|Win32.ActiveCfg = Release|Win32
+		{524B4D50-07E0-4546-B234-47FB540D5C72}.Release|Win32.Build.0 = Release|Win32
+		{3359B112-A83E-4F7B-9746-D38BAC714B16}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3359B112-A83E-4F7B-9746-D38BAC714B16}.Debug|Win32.Build.0 = Debug|Win32
+		{3359B112-A83E-4F7B-9746-D38BAC714B16}.Release|Win32.ActiveCfg = Release|Win32
+		{3359B112-A83E-4F7B-9746-D38BAC714B16}.Release|Win32.Build.0 = Release|Win32
+		{3D1CF7E6-3B8A-4635-8206-EF1CD62C5FD8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3D1CF7E6-3B8A-4635-8206-EF1CD62C5FD8}.Debug|Win32.Build.0 = Debug|Win32
+		{3D1CF7E6-3B8A-4635-8206-EF1CD62C5FD8}.Release|Win32.ActiveCfg = Release|Win32
+		{3D1CF7E6-3B8A-4635-8206-EF1CD62C5FD8}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
