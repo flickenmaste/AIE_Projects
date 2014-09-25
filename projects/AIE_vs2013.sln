@@ -30,6 +30,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tutorial3_Texturing", "Tuto
 		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B} = {BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tutorial4_ParticleSystem", "Tutorial4_ParticleSystem\Tutorial4_ParticleSystem.vcxproj", "{C99ED7F2-2860-4E4B-831E-EFD0A2C86F17}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B} = {BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -60,6 +65,10 @@ Global
 		{3D1CF7E6-3B8A-4635-8206-EF1CD62C5FD8}.Debug|Win32.Build.0 = Debug|Win32
 		{3D1CF7E6-3B8A-4635-8206-EF1CD62C5FD8}.Release|Win32.ActiveCfg = Release|Win32
 		{3D1CF7E6-3B8A-4635-8206-EF1CD62C5FD8}.Release|Win32.Build.0 = Release|Win32
+		{C99ED7F2-2860-4E4B-831E-EFD0A2C86F17}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C99ED7F2-2860-4E4B-831E-EFD0A2C86F17}.Debug|Win32.Build.0 = Debug|Win32
+		{C99ED7F2-2860-4E4B-831E-EFD0A2C86F17}.Release|Win32.ActiveCfg = Release|Win32
+		{C99ED7F2-2860-4E4B-831E-EFD0A2C86F17}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
