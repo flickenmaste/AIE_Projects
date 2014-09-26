@@ -43,8 +43,8 @@ bool Tutorial4_ParticleSystem::onCreate(int a_argc, char* a_argv[])
 	CreateShaders();
 
 	m_emitter = new ParticleEmitter();
-	m_emitter->initalise(10, 500,
-		0.1f, 0.9f, 1, 5, 0.1f, 0.2f,
+	m_emitter->initalise(10, 10,
+		0.1f, 0.9f, 1, 2, 0.1f, 0.2f,
 		glm::vec4(1, 1, 0, 1), glm::vec4(1, 0, 0, 1));
 
 	return true;
