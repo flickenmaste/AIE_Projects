@@ -40,6 +40,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tutorial5_Lighting", "Tutor
 		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B} = {BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tutorial6_GPUParticles", "Tutorial6_GPUParticles\Tutorial6_GPUParticles.vcxproj", "{15DA481A-DAAC-4BD7-82EC-91E7C4025D8C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B} = {BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -78,6 +83,10 @@ Global
 		{29448788-FD84-42F9-8CD6-0E357B466FCC}.Debug|Win32.Build.0 = Debug|Win32
 		{29448788-FD84-42F9-8CD6-0E357B466FCC}.Release|Win32.ActiveCfg = Release|Win32
 		{29448788-FD84-42F9-8CD6-0E357B466FCC}.Release|Win32.Build.0 = Release|Win32
+		{15DA481A-DAAC-4BD7-82EC-91E7C4025D8C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{15DA481A-DAAC-4BD7-82EC-91E7C4025D8C}.Debug|Win32.Build.0 = Debug|Win32
+		{15DA481A-DAAC-4BD7-82EC-91E7C4025D8C}.Release|Win32.ActiveCfg = Release|Win32
+		{15DA481A-DAAC-4BD7-82EC-91E7C4025D8C}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

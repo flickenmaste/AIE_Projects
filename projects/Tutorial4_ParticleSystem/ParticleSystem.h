@@ -2,7 +2,6 @@
 #define _PARTICLE_SYSTEM_
 
 #include "Application.h"
-#include "Application.h"
 #include <glm/glm.hpp>
 #include <stb_image.h>
 #include <Utilities.h>
