@@ -14,30 +14,24 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="shaders">
-      <UniqueIdentifier>{34541bd1-494e-43d8-9fd3-adbbe5520786}</UniqueIdentifier>
+      <UniqueIdentifier>{366b7953-662e-4fd3-99fe-52905b7dd039}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Tutorial5_Lighting.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DirectionalLight.cpp">
+    <ClCompile Include="Tutorial7_AdvTexturing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Tutorial5_Lighting.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DirectionalLight.h">
+    <ClInclude Include="Tutorial7_AdvTexturing.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\lit.frag">
+    <None Include="shaders\fragShader.frag">
       <Filter>shaders</Filter>
     </None>
-    <None Include="shaders\lit.vert">
+    <None Include="shaders\vertShader.vert">
       <Filter>shaders</Filter>
     </None>
   </ItemGroup>

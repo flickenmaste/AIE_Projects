@@ -38,9 +38,9 @@ bool Tutorial5_Lighting::onCreate(int a_argc, char* a_argv[])
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 
-	lightAmbient = glm::vec3(0.1f, 0.1f, 0.1f);
-	lightDirection = glm::vec3(2.0f, -1.0f, 1.0f);
-	lightColor = glm::vec3(1, 1, 1);
+	lightAmbient = glm::vec3(1.0f, 0.2f, 0.7f);
+	lightDirection.Direction = glm::vec3(1, 1, 1);
+	lightDirection.Color = glm::vec3(0.5, 1, 1);
 	lightSpecular = glm::vec3(0.5f, 0.5f, 0.5f);
 	
 	CreateShaders();
@@ -110,13 +110,13 @@ void Tutorial5_Lighting::onDraw()
 	glUniform3fv(location, 1, glm::value_ptr(m_cameraMatrix[3]));
 
 	unsigned int light = glGetUniformLocation(m_programID, "lightAmbient");
-	glUniform3fv(light, 1, glm::value_ptr(lightAmbient));
+	glUniform3f(light, lightAmbient.x, lightAmbient.y, lightAmbient.z);
 
 	light = glGetUniformLocation(m_programID, "lightDirection");
-	glUniform3fv(light, 1, glm::value_ptr(lightDirection));
+	glUniform3f(light, lightDirection.Direction.x, lightDirection.Direction.y, lightDirection.Direction.z);
 
 	light = glGetUniformLocation(m_programID, "lightColor");
-	glUniform3fv(light, 1, glm::value_ptr(lightColor));
+	glUniform3f(light, lightDirection.Color.x, lightDirection.Color.y, lightDirection.Color.z);
 
 	light = glGetUniformLocation(m_programID, "lightSpecular");
 	glUniform3fv(light, 1, glm::value_ptr(lightSpecular));

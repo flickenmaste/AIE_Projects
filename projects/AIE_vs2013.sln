@@ -45,6 +45,21 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tutorial6_GPUParticles", "T
 		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B} = {BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tutorial7_AdvTexturing", "Tutorial7_AdvTexturing\Tutorial7_AdvTexturing.vcxproj", "{71E6CFC1-F599-49A8-9174-D3DF1804C5AC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B} = {BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tutorial7_AdvTexturingNormMap", "Tutorial7_AdvTexturingNormMap\Tutorial7_AdvTexturingNormMap.vcxproj", "{B8E292D2-89E7-40E5-A417-2833DCDED6B0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B} = {BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tutorial7_CubeMap", "Tutorial7_CubeMap\Tutorial7_CubeMap.vcxproj", "{1BF3B919-25CE-46E0-94EB-748096C7D995}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBD02D30-A9A5-41ED-9C12-67EC17B5C08B} = {BBD02D30-A9A5-41ED-9C12-67EC17B5C08B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -87,6 +102,18 @@ Global
 		{15DA481A-DAAC-4BD7-82EC-91E7C4025D8C}.Debug|Win32.Build.0 = Debug|Win32
 		{15DA481A-DAAC-4BD7-82EC-91E7C4025D8C}.Release|Win32.ActiveCfg = Release|Win32
 		{15DA481A-DAAC-4BD7-82EC-91E7C4025D8C}.Release|Win32.Build.0 = Release|Win32
+		{71E6CFC1-F599-49A8-9174-D3DF1804C5AC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{71E6CFC1-F599-49A8-9174-D3DF1804C5AC}.Debug|Win32.Build.0 = Debug|Win32
+		{71E6CFC1-F599-49A8-9174-D3DF1804C5AC}.Release|Win32.ActiveCfg = Release|Win32
+		{71E6CFC1-F599-49A8-9174-D3DF1804C5AC}.Release|Win32.Build.0 = Release|Win32
+		{B8E292D2-89E7-40E5-A417-2833DCDED6B0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B8E292D2-89E7-40E5-A417-2833DCDED6B0}.Debug|Win32.Build.0 = Debug|Win32
+		{B8E292D2-89E7-40E5-A417-2833DCDED6B0}.Release|Win32.ActiveCfg = Release|Win32
+		{B8E292D2-89E7-40E5-A417-2833DCDED6B0}.Release|Win32.Build.0 = Release|Win32
+		{1BF3B919-25CE-46E0-94EB-748096C7D995}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1BF3B919-25CE-46E0-94EB-748096C7D995}.Debug|Win32.Build.0 = Debug|Win32
+		{1BF3B919-25CE-46E0-94EB-748096C7D995}.Release|Win32.ActiveCfg = Release|Win32
+		{1BF3B919-25CE-46E0-94EB-748096C7D995}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -28,10 +28,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SimpleFBX_Tutorial.vert">
+    <None Include="shaders\SimpleFBX_Tutorial.vert">
       <Filter>shaders</Filter>
     </None>
-    <None Include="SimpleFBX_Tutorial.frag">
+    <None Include="shaders\SimpleFBX_Tutorial.frag">
       <Filter>shaders</Filter>
     </None>
   </ItemGroup>

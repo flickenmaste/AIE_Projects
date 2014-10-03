@@ -83,8 +83,8 @@
     <ClInclude Include="Tutorial2_FBX.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SimpleFBX_Tutorial.frag" />
-    <None Include="SimpleFBX_Tutorial.vert" />
+    <None Include="shaders\SimpleFBX_Tutorial.frag" />
+    <None Include="shaders\SimpleFBX_Tutorial.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

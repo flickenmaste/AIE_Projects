@@ -6,6 +6,8 @@
 #include <GL\glew.h>
 #include <FBXFile.h>
 
+#include "DirectionalLight.h";
+
 // derived application class that wraps up all globals neatly
 class Tutorial5_Lighting : public Application
 {
@@ -50,7 +52,7 @@ protected:
 	unsigned int m_fragShader;
 
 	glm::vec3 lightAmbient;
-	glm::vec3 lightDirection;
+	DirectionalLight lightDirection;
 	glm::vec3 lightColor;
 	glm::vec3 lightSpecular;
 };
