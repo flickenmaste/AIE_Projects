@@ -19,6 +19,7 @@ bld/
 [Oo]bj/
 Models/
 textures/
+characters/
 
 # Roslyn cache directories
 *.ide/
