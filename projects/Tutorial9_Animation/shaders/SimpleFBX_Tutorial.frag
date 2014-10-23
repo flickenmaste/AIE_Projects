@@ -3,7 +3,7 @@
 //-------------------------------------
 // values sent from the vertex shader
 
-in vec2 vUV;
+in vec2 TexCoord;
 in vec4 vColor;
 
 //-------------------------------------
@@ -16,6 +16,6 @@ uniform sampler2D DiffuseTexture;
 
 void main() 
 { 
-	outColor = texture2D( DiffuseTexture, vUV.xy ) * vColor;
+	outColor = texture2D( DiffuseTexture, TexCoord );
 	outColor.a = 1;
 }

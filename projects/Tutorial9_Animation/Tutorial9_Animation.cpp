@@ -55,7 +55,7 @@ bool Tutorial9_Animation::onCreate(int a_argc, char* a_argv[])
 	glDeleteShader(pshader);
 
 	m_fbx = new FBXFile();
-	m_fbx->load("./characters/Pyro/pyro.fbx", FBXFile::UNITS_CENTIMETER);
+	m_fbx->load("./characters/Pyro/pyro.fbx", FBXFile::UNITS_METER);
 	m_fbx->initialiseOpenGLTextures();
 	InitFBXSceneResource(m_fbx);
 
