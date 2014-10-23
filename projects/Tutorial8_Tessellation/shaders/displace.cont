@@ -1,4 +1,4 @@
-#version 420
+#version 440
 
 // we're inputting 3 vertices in the patch
 // and just outputting the 3 unmodified
@@ -16,10 +16,10 @@ void main()
 	// only needs to be set once for the whole patch
 	if (gl_InvocationID == 0) 
 	{
-		gl_TessLevelInner[0] = 1;
+		gl_TessLevelInner[0] = 64;
 
-		gl_TessLevelOuter[0] = 1;
-		gl_TessLevelOuter[1] = 1;
-		gl_TessLevelOuter[2] = 1;
+		gl_TessLevelOuter[0] = 64;
+		gl_TessLevelOuter[1] = 64;
+		gl_TessLevelOuter[2] = 64;
 	}
 }

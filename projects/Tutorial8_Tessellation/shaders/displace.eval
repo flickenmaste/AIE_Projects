@@ -1,4 +1,4 @@
-#version 420
+#version 440
 
 layout(triangles, equal_spacing, ccw) in;
 
@@ -7,6 +7,10 @@ in vec2 texCoord[];
 out vec2 TexCoord;
 
 uniform mat4 projectionView;
+
+uniform sampler2D displacementMap;
+
+uniform float displacementScale;
 
 void main()
 {
@@ -17,12 +21,18 @@ void main()
 
 	TexCoord = t0 + t1 + t2;
 
+	// sample displacement texture
+	float offset = texture( displacementMap, TexCoord ).r * displacementScale;
+
 	// calculate position
 	vec3 p0 = gl_TessCoord.x * gl_in[0].gl_Position.xyz;
 	vec3 p1 = gl_TessCoord.y * gl_in[1].gl_Position.xyz;
 	vec3 p2 = gl_TessCoord.z * gl_in[2].gl_Position.xyz;
 
 	vec3 position = p0 + p1 + p2;
+
+	// displace
+	position.y += offset;
 	
 	// project to screen-space
 	gl_Position = projectionView * vec4(position, 1);
