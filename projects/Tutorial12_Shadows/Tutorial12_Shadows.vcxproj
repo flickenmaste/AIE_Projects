@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{29448788-fd84-42f9-8cd6-0e357b466fcc}</ProjectGuid>
-    <RootNamespace>Tutorial5_Lighting</RootNamespace>
+    <ProjectGuid>{88afdfdc-c12d-46e8-9e23-4dd0a4a0b926}</ProjectGuid>
+    <RootNamespace>Tutorial12_Shadows</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -77,18 +77,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DirectionalLight.cpp" />
-    <ClCompile Include="PointLight.cpp" />
-    <ClCompile Include="Tutorial5_Lighting.cpp" />
+    <ClCompile Include="Tutorial12_Shadows.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DirectionalLight.h" />
-    <ClInclude Include="PointLight.h" />
-    <ClInclude Include="Tutorial5_Lighting.h" />
+    <ClInclude Include="Tutorial12_Shadows.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\lit.frag" />
-    <None Include="shaders\lit.vert" />
+    <None Include="shaders\shadows.frag" />
+    <None Include="shaders\shadows.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

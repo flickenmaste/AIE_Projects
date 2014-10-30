@@ -18,84 +18,90 @@ Tutorial5_Lighting::~Tutorial5_Lighting()
 
 }
 
-bool Tutorial5_Lighting::onCreate(int a_argc, char* a_argv[]) 
+bool Tutorial5_Lighting::onCreate(int a_argc, char* a_argv[])
 {
 	// initialise the Gizmos helper class
 	Gizmos::create();
 
 	// create a world-space matrix for a camera
-	m_cameraMatrix = glm::inverse( glm::lookAt(glm::vec3(10,10,10),glm::vec3(0,0,0), glm::vec3(0,1,0)) );
-
-	// get window dimensions to calculate aspect ratio
-	int width = 0, height = 0;
-	glfwGetWindowSize(m_window, &width, &height);
+	m_cameraMatrix = glm::inverse(glm::lookAt(glm::vec3(10, 10, 10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0)));
 
 	// create a perspective projection matrix with a 90 degree field-of-view and widescreen aspect ratio
-	m_projectionMatrix = glm::perspective(glm::pi<float>() * 0.25f, width / (float)height, 0.1f, 1000.0f);
+	m_projectionMatrix = glm::perspective(glm::pi<float>() * 0.25f, DEFAULT_SCREENWIDTH / (float)DEFAULT_SCREENHEIGHT, 0.1f, 1000.0f);
 
 	// set the clear colour and enable depth testing and backface culling
-	glClearColor(0.25f,0.25f,0.25f,1);
+	glClearColor(0.25f, 0.25f, 0.25f, 1);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 
-	lightAmbient = glm::vec3(1.0f, 0.2f, 0.7f);
-	lightDirection.Direction = glm::vec3(1, 1, 1);
-	lightDirection.Color = glm::vec3(0.5, 1, 1);
-	lightSpecular = glm::vec3(0.5f, 0.5f, 0.5f);
-	
-	CreateShaders();
+	// load shaders and link shader program
+	m_vertShader = Utility::loadShader("./shaders/lit.vert", GL_VERTEX_SHADER);
+	m_fragShader = Utility::loadShader("./shaders/lit.frag", GL_FRAGMENT_SHADER);
+	const char* inputs[] = { "Position", "Normal" };
+	m_programID = Utility::createProgram(m_vertShader, 0, 0, 0, m_fragShader, 2, inputs);
 
 	m_fbx = new FBXFile();
 	m_fbx->load("./Models/stanford/Bunny.fbx");
 
 	createOpenGLBuffers(m_fbx);
 
+	// create directional light
+	glm::vec3 dLightDir(0, -.5, 0);
+	glm::vec3 dLightColor(0.1, 0.4, 0.1);
+	m_dLight = DirectionalLight(dLightDir, dLightColor);
+
+	// ambient light
+	m_aLight = glm::vec3(0.1, 0.1, 0.1);
+
+	// point light
+	glm::vec3 pLightPosition(0, 1, 0);
+	glm::vec3 pLightColor(0.4, 0.8, 0.5);
+	m_pLight = PointLight(pLightPosition, pLightColor);
+
 	return true;
 }
 
-void Tutorial5_Lighting::onUpdate(float a_deltaTime) 
+void Tutorial5_Lighting::onUpdate(float a_deltaTime)
 {
 	// update our camera matrix using the keyboard/mouse
-	Utility::freeMovement( m_cameraMatrix, a_deltaTime, 10 );
+	Utility::freeMovement(m_cameraMatrix, a_deltaTime, 10);
 
 	// clear all gizmos from last frame
 	Gizmos::clear();
-	
+
 	// add an identity matrix gizmo
-	Gizmos::addTransform( glm::mat4(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1) );
+	Gizmos::addTransform(glm::mat4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1));
 
 	// add a 20x20 grid on the XZ-plane
-	for ( int i = 0 ; i < 21 ; ++i )
+	for (int i = 0; i < 21; ++i)
 	{
-		Gizmos::addLine( glm::vec3(-10 + i, 0, 10), glm::vec3(-10 + i, 0, -10), 
-						 i == 10 ? glm::vec4(1,1,1,1) : glm::vec4(0,0,0,1) );
-		
-		Gizmos::addLine( glm::vec3(10, 0, -10 + i), glm::vec3(-10, 0, -10 + i), 
-						 i == 10 ? glm::vec4(1,1,1,1) : glm::vec4(0,0,0,1) );
+		Gizmos::addLine(glm::vec3(-10 + i, 0, 10), glm::vec3(-10 + i, 0, -10),
+			i == 10 ? glm::vec4(1, 1, 1, 1) : glm::vec4(0, 0, 0, 1));
+
+		Gizmos::addLine(glm::vec3(10, 0, -10 + i), glm::vec3(-10, 0, -10 + i),
+			i == 10 ? glm::vec4(1, 1, 1, 1) : glm::vec4(0, 0, 0, 1));
 	}
 
 	// quit our application when escape is pressed
-	if (glfwGetKey(m_window,GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	if (glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		quit();
+
+	// update fbx
+	//m_fbx->getRoot()->updateGlobalTransform();
 }
 
-void Tutorial5_Lighting::onDraw() 
+void Tutorial5_Lighting::onDraw()
 {
 	// clear the backbuffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+
 	// get the view matrix from the world-space camera matrix
-	glm::mat4 viewMatrix = glm::inverse( m_cameraMatrix );
-	
+	glm::mat4 viewMatrix = glm::inverse(m_cameraMatrix);
+
 	// draw the gizmos from this frame
 	Gizmos::draw(m_projectionMatrix, viewMatrix);
 
-	// get window dimensions for 2D orthographic projection
-	int width = 0, height = 0;
-	glfwGetWindowSize(m_window, &width, &height);
-	Gizmos::draw2D(glm::ortho<float>(0, width, 0, height, -1.0f, 1.0f));
-
-	// bind shader to the GPU
+	// bind shader to GPU
 	glUseProgram(m_programID);
 
 	// fetch locations of the view and projection matrices and bind them
@@ -105,21 +111,26 @@ void Tutorial5_Lighting::onDraw()
 	location = glGetUniformLocation(m_programID, "projection");
 	glUniformMatrix4fv(location, 1, false, glm::value_ptr(m_projectionMatrix));
 
-	// send camera position
+	// Directional Light -------------------------------------------------
+	location = glGetUniformLocation(m_programID, "lightAmbient");
+	glUniform3fv(location, 1, glm::value_ptr(m_aLight));
+
+	location = glGetUniformLocation(m_programID, "lightDirection");
+	glUniform3fv(location, 1, glm::value_ptr(m_dLight.m_v3Facing));
+
+	location = glGetUniformLocation(m_programID, "lightColor");
+	glUniform3fv(location, 1, glm::value_ptr(m_dLight.m_v3Color));
+
+	location = glGetUniformLocation(m_programID, "specularColor");
+	glUniform3fv(location, 1, glm::value_ptr(m_dLight.m_v3SpecularColor));
+
+	// Point Light --------------------------------------------------------
+
+
+
 	location = glGetUniformLocation(m_programID, "cameraPosition");
 	glUniform3fv(location, 1, glm::value_ptr(m_cameraMatrix[3]));
 
-	unsigned int light = glGetUniformLocation(m_programID, "lightAmbient");
-	glUniform3f(light, lightAmbient.x, lightAmbient.y, lightAmbient.z);
-
-	light = glGetUniformLocation(m_programID, "lightDirection");
-	glUniform3f(light, lightDirection.Direction.x, lightDirection.Direction.y, lightDirection.Direction.z);
-
-	light = glGetUniformLocation(m_programID, "lightColor");
-	glUniform3f(light, lightDirection.Color.x, lightDirection.Color.y, lightDirection.Color.z);
-
-	light = glGetUniformLocation(m_programID, "lightSpecular");
-	glUniform3fv(light, 1, glm::value_ptr(lightSpecular));
 
 	// bind our vertex array object and draw the mesh
 	for (unsigned int i = 0; i < m_fbx->getMeshCount(); ++i)
@@ -144,23 +155,14 @@ int main(int argc, char* argv[])
 {
 	// explicitly control the creation of our application
 	Application* app = new Tutorial5_Lighting();
-	
-	if (app->create("AIE - Tutorial5_Lighting",DEFAULT_SCREENWIDTH,DEFAULT_SCREENHEIGHT,argc,argv) == true)
+
+	if (app->create("AIE - Tutorial5_Lighting", DEFAULT_SCREENWIDTH, DEFAULT_SCREENHEIGHT, argc, argv) == true)
 		app->run();
-		
+
 	// explicitly control the destruction of our application
 	delete app;
 
 	return 0;
-}
-
-void Tutorial5_Lighting::CreateShaders()
-{
-	// load shaders and link shader program
-	m_vertShader = Utility::loadShader("./shaders/lit.vert", GL_VERTEX_SHADER);
-	m_fragShader = Utility::loadShader("./shaders/lit.frag", GL_FRAGMENT_SHADER);
-	const char* inputs[] = { "Position", "Normal" };
-	m_programID = Utility::createProgram(m_vertShader, 0, 0, 0, m_fragShader, 2, inputs);
 }
 
 void Tutorial5_Lighting::createOpenGLBuffers(FBXFile* a_fbx)
@@ -186,8 +188,9 @@ void Tutorial5_Lighting::createOpenGLBuffers(FBXFile* a_fbx)
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->m_indices.size() * sizeof(unsigned int), mesh->m_indices.data(), GL_STATIC_DRAW);
 
 		glEnableVertexAttribArray(0); // position
-		glEnableVertexAttribArray(1); // normal
 		glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(FBXVertex), 0);
+
+		glEnableVertexAttribArray(1); // normal
 		glVertexAttribPointer(1, 4, GL_FLOAT, GL_TRUE, sizeof(FBXVertex), ((char*)0) + FBXVertex::NormalOffset);
 
 		glBindVertexArray(0);

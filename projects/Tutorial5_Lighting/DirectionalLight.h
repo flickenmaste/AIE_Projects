@@ -1,13 +1,16 @@
-#ifndef _DIRECTIONALLIGHT_H_
-#define _DIRECTIONALLIGHT_H_
+#pragma once
 
 #include <glm/glm.hpp>
 
 class DirectionalLight
 {
 public:
-	glm::vec3 Direction;
-	glm::vec3 Color;
-};
 
-#endif
+	DirectionalLight();
+	DirectionalLight(glm::vec3 a_v3Facing, glm::vec3 a_v3Color);
+	~DirectionalLight();
+
+	glm::vec3 m_v3Facing;
+	glm::vec3 m_v3Color;
+	glm::vec3 m_v3SpecularColor;
+};
